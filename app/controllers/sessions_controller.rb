@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
 
   # render text: "welcome back #{@authorization.user.name}"
   # else
-  # 	user=User.new name: auto_hash["user_info"]["name"],email: auto_hash["user_info"]["email"]
+  # 	user=User.new name: auto_hash["user"]["name"],email: auto_hash["user"]["email"]
   # 	user.authorization.build provider: auto_hash["provider"],uid: auto_hash["uid"]
   # 		user.save
   # 		render text: "HI #{user.name}.You successfully signed up"
@@ -31,11 +31,16 @@ class SessionsController < ApplicationController
   end
 
 
+def destroy
+	session[:user_id]=nil
+	render text: "Logged out"
+end
+
   end
 
   def failure
+  	render text: "You dint allow access to this app"
   end
 
-  def destroy
-  end
+  
 end

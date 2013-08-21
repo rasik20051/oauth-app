@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
 	has_many :authorizations
-	valiidates :email,:name,presence: true
+	validates :email,:name,presence: true
 
 
 	def add_provider(auth_hash)
